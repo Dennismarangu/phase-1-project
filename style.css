@@ -1,0 +1,174 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-family:'Literata', serif;
+}
+
+/* body {
+  display: flex;
+} */
+
+.container {
+  display: flex;
+  justify-content: top;
+  align-items: center;
+  min-height: 20vh;
+  max-width: 100%;
+  flex-direction: column;
+  background-color: maroon;
+  color: black;
+  padding: 0;
+  margin: auto;
+}
+
+.container-list {
+  display: flex;
+  justify-content: top;
+  align-items: center;
+  min-height: 40vh;
+  max-width: 100%;
+  flex-direction: column;
+  background-color: grey;
+  color: black;
+  padding: 0;
+  margin: auto;
+}
+
+.container-list:hover{
+  transform: scale(1.1);
+
+}
+
+
+
+.more-info {
+  background-color: black;
+  width: 1353px;
+  height: 100px;
+}
+
+form {
+  margin-top: 20px;
+}
+
+ #artwork-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+  list-style: none
+  }
+  
+  #artwork-list li {
+  flex-basis: 25%;
+  margin-bottom: 1em;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 2em;
+  position: relative;
+  
+}
+  
+  #artwork-list li:hover{
+    transform: scale(1.1);
+    padding-bottom: 10px;
+  } 
+  
+  #artwork-list img {
+    max-width: 100%;
+    height: 400px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  #artwork-list h3 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0 0;
+  }
+  
+  #artwork-list p {
+    font-size: 1rem;
+    margin: 0;
+    color: black;
+  }
+ 
+  /* #artwork-list p:hover {
+    padding-top: 10px;
+  } */
+
+  #artwork-details h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  #artwork-details p {
+    font-size: 1.2rem;
+    margin: 0;
+    color: #999;
+  }
+  
+  #artwork-details img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 1rem;
+  }
+  
+  .fa-heart-o, .fa-heart {
+    font-size: 1.5rem;
+    color: #555;
+    cursor: pointer;
+    margin-left: 20px;
+  }
+  .fa-heart-o:hover, .fa-heart:hover {
+    color: #F44336;
+  }
+  .fa-heart.red {
+    color: #F44336;
+  }
+
+  .bookmark-animation {
+    animation-name: bookmark;
+    animation-duration: 1s;
+    background-color: black;
+    color: white;
+  }
+  
+  @keyframes bookmark {
+    0% {
+      transform: scale(1);
+      color: white
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+      color: white
+    }
+  }
+
+  .bookmark-animation {
+    animation-name: bookmark;
+    animation-duration: 1s;
+  }
+  
+  .bookmark-animation.finished {
+    animation-name: none;
+  }
+  
+  @keyframes bookmark {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
