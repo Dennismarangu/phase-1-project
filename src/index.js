@@ -37,6 +37,26 @@ artworkList.addEventListener('click', (event) => {
   }
 });
 
+function renderArtworks(artworks) {
+  const container = document.getElementById('artworks-container');
+
+  // Clear any previous search results
+  container.innerHTML = '';
+
+  // Loop through each artwork and create an element for it
+  artworks.forEach((artwork) => {
+    const element = document.createElement('div');
+    element.innerHTML = `
+      <h2>${artwork.title}</h2>
+      <img src="${artwork.thumbnail.url}">
+      <p>${artwork.artist_display}</p>
+    `;
+
+    // Append the element to the container
+    container.appendChild(element);
+  });
+}
+
 // Define a function to fetch artworks from the API
 function fetchArtworks(searchTerm) {
   let url = 'https://api.artic.edu/api/v1/artworks';
@@ -105,9 +125,13 @@ function addToFavorites(artwork) {
     favoriteBtn.addEventListener('click', () => {
       // Add code to handle adding the artwork to the user's favorites
       addToFavorites(artwork)
-      document.getElementById('Favourites-list').innerHTML = `Favourites-list: ${userFavorites}`
-      event.target.classList.add('bookmark-animation');
-      // setTimeout((event) => {
+      // document.getElementById('Favourites-list').innerHTML = `Favourites-list: ${userFavorites}`
+      // event.target.classList.add('bookmark-animation');
+        
+      // Toggle the "bookmark-animation" class on and off for the "Add to Favorites" button
+       event.target.classList.toggle('bookmark-animation');
+      
+       // setTimeout((event) => {
       //   event.target.classList.remove('bookmark-animation');
       //   event.target.classList.add('finished');
       //   setTimeout(() => {
