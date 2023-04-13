@@ -38,7 +38,8 @@ h1 {
   margin: auto;
 }
 
-.container-list:hover{
+/* hover */
+.container-list{
   transform: scale(1.1);
 
 }
@@ -74,8 +75,8 @@ form {
   position: relative;
   
 }
-  
-  #artwork-list li:hover{
+  /* hover */
+  #artwork-list li {
     transform: scale(1.1);
     padding-bottom: 10px;
   } 
