@@ -113,7 +113,7 @@ function renderArtworks(artworks) {
 function addToFavorites(artwork) {
   // The function checks if the artwork is already in the array using the some method, which returns true if at least one element in the array satisfies the provided callback function. If the artwork is not already in the array, it is added using the push method.
   if (userFavorites.some(item => item.id === artwork.id)) {
-    console.log(`"${artwork.title}" is already in your favorites.`);
+    console.log(`"${artwork.title}" removed from your favorites.`);
   } else {
     // Add the artwork to the user's favorites
     userFavorites.push(artwork);
