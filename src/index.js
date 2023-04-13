@@ -48,7 +48,7 @@ function renderArtworks(artworks) {
     const element = document.createElement('div');
     element.innerHTML = `
       <h2>${artwork.title}</h2>
-      <img src="${artwork.thumbnail.url}">
+      <img src="${artwork.thumbnailImg.src}">
       <p>${artwork.artist_display}</p>
     `;
 
@@ -90,55 +90,46 @@ function renderArtworks(artworks) {
     thumbnailImg.src = `https://www.artic.edu/iiif/2/${artwork.image_id}/full/843,/0/default.jpg`
      thumbnailImg.width = "100px"
      thumbnailImg.height = "100px"
-    // thumbnailImg.alt = artwork.publication_history;
-    
-      //   // Set the srcset attribute with multiple image sources
-      //   thumbnailImg.srcset = `
-      //    ${artwork.thumbnail.src}
-      //    ${artwork.thumbnail.width}w,
-      //    ${artwork.thumbnail.url}
-      //    ${artwork.thumbnail.height}
-      //    ${artwork.thumbnail.alt_text}
-      //    ${artwork.publication_history}
-      //  `;
-       
-      // Check if the thumbnail object exists before accessing its properties
+
+       // Check if the thumbnail object exists before accessing its properties
        if (artwork.thumbnail) {
         thumbnailImg.width = artwork.thumbnail.width;
         thumbnailImg.height = artwork.thumbnail.height;
         thumbnailImg.alt = artwork.publication_history;
       }
 
-// Define an array to store the user's favorite artworks
-function addToFavorites(artwork) {
-  // The function checks if the artwork is already in the array using the some method, which returns true if at least one element in the array satisfies the provided callback function. If the artwork is not already in the array, it is added using the push method.
-  if (userFavorites.some(item => item.id === artwork.id)) {
-    console.log(`"${artwork.title}" removed from your favorites.`);
-  } else {
-    // Add the artwork to the user's favorites
-    userFavorites.push(artwork);
-    console.log(`"${artwork.title}" has been added to your favorites!`);
-  }
-}
+      function addToFavorites(artwork) {
+        const index = userFavorites.findIndex(item => item.id === artwork.id);
+        if (index > -1) {
+          userFavorites.splice(index, 1);
+          console.log(`"${artwork.title}" removed from your favorites.`);
+          const listItem = favoritesList.querySelector(`[data-artwork-id="${artwork.id}"]`);
+          if (listItem) {
+            listItem.remove();
+          }
+        } else {
+          userFavorites.push(artwork);
+          console.log(`"${artwork.title}" has been added to your favorites!`);
+          const favoriteItem = document.createElement('li');
+          favoriteItem.dataset.artworkId = artwork.id;
+          favoriteItem.innerHTML = `
+            <h2>${artwork.title}</h2>
+            <img>
+            <p>${artwork.artist_display}</p>
+          `;
+          favoritesList.appendChild(favoriteItem);
+        }
+      }
+
     const favoriteBtn = document.createElement('button')
     favoriteBtn.innerText = 'Add to Favorites';
     favoriteBtn.addEventListener('click', () => {
+      
       // Add code to handle adding the artwork to the user's favorites
       addToFavorites(artwork)
-      // document.getElementById('Favourites-list').innerHTML = `Favourites-list: ${userFavorites}`
-      // event.target.classList.add('bookmark-animation');
-        
+
       // Toggle the "bookmark-animation" class on and off for the "Add to Favorites" button
        event.target.classList.toggle('bookmark-animation');
-      
-       // setTimeout((event) => {
-      //   event.target.classList.remove('bookmark-animation');
-      //   event.target.classList.add('finished');
-      //   setTimeout(() => {
-      //     event.target.classList.remove('finished');
-      //   }, 3000);
-      // }, 3000);
-    
     });
   
   // Create heart icon and make it persist
