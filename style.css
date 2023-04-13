@@ -137,6 +137,20 @@ form {
     background-color: black;
     color: white;
   }
+
+  @media only screen and (max-width: 600px) {
+    .container {
+      min-height: 40vh;
+    }
+    
+    .container-list {
+      min-height: 80vh;
+    }
+    
+    #artwork-list li {
+      flex-basis: 100%;
+    }
+  }
   
   @keyframes bookmark {
     0% {
